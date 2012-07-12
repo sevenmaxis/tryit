@@ -8,7 +8,7 @@ Instead of
 
 you can do this 
 
-    obj1.try{ obj2.obj3.obj4.to_s }
+    obj1.tryit{ obj2.obj3.obj4.to_s }
 
 ## Installation
 
