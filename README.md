@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Tryit
 
 TODO: Write a gem description
@@ -27,3 +28,15 @@ TODO: Write usage instructions here
 3. Commit your changes (`git commit -am 'Added some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+=======
+tryit
+=====
+
+another version of try
+
+
+Instead of 
+  some_object.try(:gsub!, /\D/, '') 
+you can do this 
+  some_object.tryit{ gsub!(/\D/, '') }
+>>>>>>> 85bd0b5ee3fd333af40ae14f938efc45f75b96f8
