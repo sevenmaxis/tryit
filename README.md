@@ -2,7 +2,13 @@
 
 another version of try
 
-Instead of some_object.try(:gsub!, /\D/, '') you can do this some_object.tryit{ gsub!(/\D/, '') }
+Instead of 
+
+    obj1.try(:obj2).try(:obj3).try(:obj4).to_s
+
+you can do this 
+
+    obj1.try{ obj2.obj3.obj4.to_s }
 
 ## Installation
 
