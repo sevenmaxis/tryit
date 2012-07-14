@@ -1,8 +1,12 @@
 require "tryit/version"
 
-module TryIt
-  EXCEPTIONS = [NoMethodError]
-  HANDLER = lambda { |e| puts e.message }
+class TryIt
+  class << self
+    attr_accessor :exceptions, :handler
+  end
+
+  @exceptions = [NoMethodError]
+  @handler = lambda { |e| puts e.message }
 end
 
 class Object
@@ -12,7 +16,11 @@ class Object
     else
       send(*args, &block)
     end
-  rescue *TryIt::EXCEPTIONS => e
-    TryIt::HANDLER.call(e)
+  rescue *TryIt.exceptions => e
+    TryIt.handler.call(e)
   end
 end
+
+1.tryit(:dsdw)
+TryIt.exceptions << ZeroDivisionError
+tryit { 1/0 }
