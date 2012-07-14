@@ -20,7 +20,3 @@ class Object
     TryIt.handler.call(e)
   end
 end
-
-1.tryit(:dsdw)
-TryIt.exceptions << ZeroDivisionError
-tryit { 1/0 }
