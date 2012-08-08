@@ -6,7 +6,7 @@ class TryIt
   end
 
   @exceptions = [NoMethodError]
-  @handler = lambda { |e| puts e.message }
+  @handler = lambda { |_| nil }
 end
 
 class Object
