@@ -42,6 +42,10 @@ Or install it yourself:
 
 * Find a way to make the exception list not global.
 
+## License
+
+Lincesend under the MIT license. See the provided LICENSE file for details.
+
 ## Contributing
 
 1. Fork it
