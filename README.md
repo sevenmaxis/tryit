@@ -38,7 +38,9 @@ Or install it yourself:
 
     $ gem install tryit
 
-##
+## Todo
+
+* Find a way to make the exception list not global.
 
 ## Contributing
 
