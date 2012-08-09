@@ -1,21 +1,21 @@
 # Tryit
 
-another version of try
+Another approach to Rail's `Object#try`. This is the result of a StackOverflow discussion between [Sergey Gopkalo](https://github.com/sevenmaxis/) and [Michael Kohl](https://github.com/citizen428).
 
-Instead of 
+Instead of
 
     obj1.try(:obj2).try(:obj3).try(:obj4).to_s
 
-you can do this 
+you can do this
 
-    obj1.tryit{ obj2.obj3.obj4.to_s }
+    obj1.tryit { obj2.obj3.obj4.to_s }
 
-Add exception to intercept this kind of exceptions
+You can customize which excpetions to catch:
 
     TryIt.exceptions << ZeroDivisionError
     obj.try { 1/0 }  # will not raise exceptions
 
-Change the handler 
+There's also the possibility to define your own exception handlers:
 
     TryIt.handler = lambda { |_| puts "message from tryit" }
     obj.try { raise NoMethodError } # will print "message from tryit"
@@ -30,13 +30,11 @@ And then execute:
 
     $ bundle
 
-Or install it yourself as:
+Or install it yourself:
 
     $ gem install tryit
 
-## Usage
-
-TODO: Write usage instructions here
+##
 
 ## Contributing
 
