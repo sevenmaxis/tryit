@@ -13,7 +13,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.name          = "tryit"
   gem.require_paths = ["lib"]
-  gem.version       = Tryit::VERSION
+  gem.version       = TryIt::VERSION
 
   gem.add_development_dependency "rake"
   gem.add_development_dependency "rspec", "~>2.9.0"
