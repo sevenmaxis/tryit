@@ -5,7 +5,7 @@ Gem::Specification.new do |gem|
   gem.authors       = ["Sergey Gopkalo", "Michael Kohl"]
   gem.email         = ["Sergey.Gopkalo@gmail.com", "citizen428@gmail.com"]
   gem.description   = %q{Try methods without exceptions}
-  gem.summary       = %q{tryit allows to make more compact code the try method from Rails}
+  gem.summary       = %q{An alternative approach to Rails Object#try}
   gem.homepage      = "http://github.com/sevenmaxis/tryit"
 
   gem.files         = `git ls-files`.split($\)

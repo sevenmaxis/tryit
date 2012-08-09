@@ -5,8 +5,8 @@ class TryIt
     attr_accessor :exceptions, :handler
   end
 
-  @exceptions = [NoMethodError]
-  @handler = lambda { |e| puts e.message }
+  @exceptions = [NameError]
+  @handler = lambda { |_| nil }
 end
 
 class Object

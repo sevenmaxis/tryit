@@ -1,58 +1,51 @@
 require 'spec_helper'
 
 describe Object do
-  describe "try method" do
+  describe "#tryit" do
     let(:obj) { Object.new }
 
-    it "should raise exception" do
+    it "doesn't catch unspecified exceptions" do
       class A; def foo; raise "test exception" end end
-      expect do 
-        A.new.try{ foo }
+      expect do
+        A.new.tryit{ foo }
       end.to raise_error(RuntimeError, "test exception")
     end
 
-    it "should not raise NameError" do
-      expect{ obj.try{ foo } }.to_not raise_error(NameError)
+    it "does not raise NameError" do
+      expect{ obj.tryit{ foo } }.to_not raise_error(NameError)
     end
-
-    it "should yield the block" do
+    it "yields to a provided block" do
       obj.should_receive(:foo)
-      obj.try{ foo }
+      obj.tryit{ foo }
     end
 
-    it "should send a method" do
+    it "sends a method" do
       obj.should_receive(:foo)
-      obj.try{ foo }
+      obj.tryit{ foo }
     end
 
-    it "should send a method with arguments" do
+    it "sends a method with arguments" do
       def obj.foo(arg); arg end
-      obj.try(:foo, "arguments").should == "arguments"
+      obj.tryit(:foo, "arguments").should == "arguments"
     end
 
     it "test" do
       def obj.foo(arg); arg end
-      expect{ obj.try{ foo("foo")} }.to_not raise_error
-      obj.try{ foo("foo") }.should == "foo"
+      expect{ obj.tryit{ foo("foo")} }.to_not raise_error
+      obj.tryit{ foo("foo") }.should == "foo"
     end
 
-    it "should check chain calls" do
+    it "handles chained calls" do
       def obj.foo; self end
       def obj.boo; "boo" end
-      obj.try{ foo.boo }.should == 'boo'
+      obj.tryit{ foo.boo }.should == 'boo'
     end
 
-    it "should not raise exception in chain calls" do
+    it "does not raise exceptions in chain calls" do
       def obj.foo; self end
       def obj.koo; self end
-      expect{ obj.try{ foo.koo.too }}.to_not raise_error(NameError)
+      expect{ obj.tryit{ foo.koo.too }}.to_not raise_error(NameError)
     end
 
-    it "should set local variable" do
-      pending "the question is it possible to set local variable ?"
-      result = ""
-      def obj.foo; result = "test" end
-      result.should == "test"
-    end
   end
 end
