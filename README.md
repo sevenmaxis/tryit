@@ -4,21 +4,25 @@ Another approach to Rail's `Object#try`. This is the result of a StackOverflow d
 
 Instead of
 
-    obj1.try(:obj2).try(:obj3).try(:obj4).to_s
+    obj1.try(:met1).try(:met2).try(:met3).to_s
 
 you can do this
 
-    obj1.tryit { obj2.obj3.obj4.to_s }
+    obj1.tryit { met1.met2.met3.to_s }
+
+or this (the preferred form):
+
+    tryit { obj.met1.met2.met3.to_s }
 
 You can customize which excpetions to catch:
 
     TryIt.exceptions << ZeroDivisionError
-    obj.try { 1/0 }  # will not raise exceptions
+    tryit { 1/0 }  # will not raise exceptions
 
 There's also the possibility to define your own exception handlers:
 
     TryIt.handler = lambda { |_| puts "message from tryit" }
-    obj.try { raise NoMethodError } # will print "message from tryit"
+    tryit { raise NoMethodError } # will print "message from tryit"
 
 ## Installation
 
