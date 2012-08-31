@@ -14,7 +14,7 @@ or this (the preferred form):
 
     tryit { obj.met1.met2.met3.to_s }
 
-You can customize which excpetions to catch:
+You can customize which exceptions to catch:
 
     TryIt.exceptions << ZeroDivisionError
     tryit { 1/0 }  # will not raise exceptions
