@@ -3,27 +3,27 @@
 Another approach to Rail's `Object#try`. This is the result of a StackOverflow discussion between [Sergey Gopkalo](https://github.com/sevenmaxis/) and [Michael Kohl](https://github.com/citizen428).
 
 Instead of
-
-    obj.try(:met1).try(:met2).try(:met3).to_s
-
+```ruby
+obj.try(:met1).try(:met2).try(:met3).to_s
+```
 you can do this
-
-    obj.tryit { met1.met2.met3.to_s }
-
+```ruby
+obj.tryit { met1.met2.met3.to_s }
+```
 or this (the preferred form):
-
-    tryit { obj.met1.met2.met3.to_s }
-
+```ruby
+tryit { obj.met1.met2.met3.to_s }
+```
 You can customize which exception to catch:
-
-    TryIt.exceptions << ZeroDivisionError
-    tryit { 1/0 }  # will not raise exceptions
-
+```ruby
+TryIt.exceptions << ZeroDivisionError
+tryit { 1/0 }  # will not raise exceptions
+```
 There's also the possibility to define your own exception handlers:
-
-    TryIt.handler = lambda { |_| puts "message from tryit" }
-    tryit { raise NoMethodError } # will print "message from tryit"
-
+```ruby
+TryIt.handler = lambda { |_| puts "message from tryit" }
+tryit { raise NoMethodError } # will print "message from tryit"
+```
 ## Installation
 
 Add this line to your application's Gemfile:
